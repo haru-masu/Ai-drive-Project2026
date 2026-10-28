@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOアプリ</title>
+    <style>
+        body {
+        font-family: sans-serif;
+        max-width: 650px;
+        margin: 40px auto;
+        padding: 0 16px;
+        }
+        form {
+        display: flex;
+        gap: 8px;
+        }
+        input {
+        flex: 1;
+        padding: 10px;
+        }
+        button {
+        padding: 8px 12px;
+        cursor: pointer;
+        }
+        li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0;
+        }
+        li span {
+        flex: 1;
+        overflow-wrap: anywhere;
+        }
+        .completed {
+        text-decoration: line-through;
+        color: gray;
+        }
+        #message {
+        color: #b00020;
+        }
+    </style>
+    <script src="/todo/todo.js" defer></script>
+    </head>
+    <body>
+    <h1>TODOアプリ</h1>
+
+    <form id="todo-form">
+        <input
+        id="todo-title"
+        type="text"
+        placeholder="やることを入力"
+        maxlength="100"
+        required
+        >
+        <button type="submit">登録</button>
+    </form>
+
+    <p id="message" role="status"></p>
+    <ul id="todo-list"></ul>
+</body>
+</html>
