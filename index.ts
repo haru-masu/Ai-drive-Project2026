@@ -33,6 +33,30 @@ app.get("/api/db-check", async (_req, res) => {
     }
 });
 
+// 商品データの型
+type Product = {
+    id: number;
+    name: string;
+    price: number;
+};
+
+// 商品一覧ページ
+app.get('/db-sample', async (_req, res) => {
+    try {
+    const result = await pool.query<Product>(
+        'SELECT id, name, price FROM products ORDER BY id'
+    );
+
+    res.render('db-sample', {
+        products: result.rows
+    });
+    } catch (error) {
+    console.error('商品一覧の取得に失敗しました', error);
+    res.status(503).send('商品一覧を表示できません');
+    }
+});
+
+
 app.listen(port, (): void => {
     console.log(`Server started: http://localhost:${port}`);
 });
